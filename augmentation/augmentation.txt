@@ -1,0 +1,7 @@
+After I split the images into tiles, I realized that the resulting number of images was very small, 300 images around. This number was far too low to cover the variety of scenes and objects in the images, especially the small details that could easily be lost if they weren’t well represented.
+
+At first, I considered using traditional code-based augmentation, but honestly, that would have been very complex and time-consuming. Each type of transformation would require its own code, and I’d have to carefully check every image to make sure the quality remained good, especially since the fine details in the small tiles were important and couldn’t be lost.
+
+That’s why I turned to Roboflow, which provided all the tools ready to use in an easy and organized way. It allowed me to rotate, resize, adjust lighting, apply flips, and even combine multiple transformations at once, all while keeping the small details in the tiles intact. On top of that, all the resulting images were well-organized and easy to download and use, which saved me a lot of time and effort.
+
+The result was clear: I ended up with a larger dataset, more variety, and all important details preserved. Instead of spending a long time writing and testing code for every transformation, Roboflow gave me a strong and diverse dataset quickly and efficiently—something that would have been very hard to achieve with traditional coding.

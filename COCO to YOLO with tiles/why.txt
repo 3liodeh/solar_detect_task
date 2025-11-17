@@ -1,0 +1,75 @@
+General Idea
+
+The goal is to take a large COCO dataset and split it into tiles, so that:
+
+* The model can see smaller details more clearly.
+* No small object is missed in large images.
+* The number of training images increases without collecting new data.
+* Segmentation masks are correctly preserved in each tile.
+
+The full pipeline:
+Tiling → Checking → Cleaning → YOLO Format → Training with YOLO
+
+SAHI Slicing: Image and Annotation Tiling
+
+What it does
+SAHI splits each COCO image into smaller tiles and crops the annotations accordingly.
+
+Example: a 4000×3000 image with 10 objects → Result:
+
+* 640×640 image tiles
+* New JSON with annotations for each tile
+
+Why we do it
+
+* YOLO performs better on 640×640 images
+* Small objects become clearer
+* The number of training images increases without adding new data
+* Performance improves significantly, especially for segmentation
+
+COCO Stats Check: Validate the Results
+
+What it does
+Coco.from_coco_dict_or_path(...)
+print(coco.stats)
+
+* Provides stats: number of images, annotations, categories
+* Detects empty images or broken annotations
+
+Why it matters
+
+* Tiling may cause issues like:
+* Images without annotations
+* Partially cropped annotations
+* ID mismatches
+* Ensures the dataset is clean before proceeding
+
+Cleaning Files — Remove Unrelated Images
+
+What it does
+Removes files that:
+
+* Are not in the COCO images list
+* Are not JSON files
+
+Why it matters
+
+* YOLO training fails if images do not have labels
+* Prevents warnings, slow training, or failures
+
+Convert COCO → YOLO Format
+
+What it does
+convert_coco(..., use_segments=True)
+
+* Creates a labels/ folder for each image
+* Preserves segmentation masks
+* Generates txt files in the correct YOLO format
+
+Why better than manual
+
+* Manual conversion is very complex
+* YOLO format ensures proper training without errors
+* Produces ready-to-train data for YOLO
+
+
