@@ -4,10 +4,11 @@
 
 This project focuses on building and training an advanced model for **Instance Segmentation** using the **YOLOv11s** architecture. This specific model was chosen to achieve the best balance between **speed, lightweightness, and accuracy** compared to other versions.
 
+This project focuses on building and training an advanced **Instance Segmentation** model using the **YOLOv11s** architecture, which was selected to achieve the best balance between **speed, lightweightness, and accuracy** compared to other versions. The project is based on a small dataset consisting of only **10 images**.
+
 * The YOLOv11s model is distinguished by being **highly compact**, ensuring it runs smoothly even on devices with limited resources.
 * The low **Inference Time** makes it ideal for **Real-Time Applications**.
-* The training process was straightforward and did not require a lot of memory.
-
+* The training process was straightforward and required minimal memory on a T4 GPU.
 ---
 
 ## ⚙️ Model Setup and Configuration
