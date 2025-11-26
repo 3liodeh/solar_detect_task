@@ -1,4 +1,4 @@
-## 🚀 Project: Developing an Object Instance Segmentation Model using YOLOv11s
+## 🚀 Object Instance Segmentation Using YOLOv11s and a 10 Image Dataset
 
 ## 🌟 Project Overview
 
